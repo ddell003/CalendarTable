@@ -20,9 +20,17 @@ insert into ints values (0),(1),(2),(3),(4),(5),(6),(7),(8),(9);
 
 -- load date data into calendar table
 -- you can change the starting date
+-- start date is 2018–01–01
+-- interval is 11322 (days)
 insert into calendar_table (dt) 
-select date(‘2018–01–01’) + interval a.i*10000 + b.i*1000 + c.i*100 + d.i*10 + e.i day from ints a join ints b join ints c join ints d join ints e 
-where (a.i*10000 + b.i*1000 + c.i*100 + d.i*10 + e.i) <= 11322 order by 1;
+select date(‘2018–01–01’) + interval a.i*10000 + b.i*1000 + c.i*100 + d.i*10 + e.i day 
+from ints a 
+join ints b 
+join ints c 
+join ints d 
+join ints e 
+where (a.i*10000 + b.i*1000 + c.i*100 + d.i*10 + e.i) <= 11322 
+order by 1;
 
 
 -- load other columns in date data of calendar table
